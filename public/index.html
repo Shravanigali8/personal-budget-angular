@@ -15,7 +15,7 @@
 
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/">Homepage</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/login.html">Login</a></li>
             <li><a href="https://google.com">Google</a></li>
@@ -133,15 +133,16 @@
         }
 
         function getBudget() {
-            axios.get('http://localhost:3000/budget')
-            .then(function (res) {
-                for (var i = 0; i < res.data.myBudget.length; i++) {
-                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                    dataSource.labels[i] = res.data.myBudget[i].title;
-                    createChart();
-                }
-            });
-        }
+    axios.get('/budget')  // Use relative URL, let Nginx forward request
+    .then(function (res) {
+        dataSource.labels = res.data.myBudget.map(item => item.title);
+        dataSource.datasets[0].data = res.data.myBudget.map(item => item.budget);
+        createChart();
+    })
+    .catch(function (error) {
+        console.error("Error fetching budget data:", error);
+    });
+}
 
         getBudget();
     </script>
