@@ -3,80 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget - Manage Your Expenses</title>
     <!-- This is an SEO Change -->
-    <title>Personal Budget - Simple Finance Management</title>
+    <meta name="description" content="A neon-themed app to track your expenses and manage your budget effectively. Stay in control of your finances.">
     <!-- This is an SEO Change -->
-    <meta name="description" content="Manage your personal budget, track expenses, and achieve financial goals with ease using our intuitive app.">
+    <meta name="keywords" content="budget tracking, personal finance, expense management, neon budget app">
     <!-- This is an SEO Change -->
-    <meta name="keywords" content="budget management, finance tracker, expense tracking, personal budget tool">
+    <meta name="author" content="Personal Budget Team">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <!-- This is an A11y Change -->
-    <a href="#main" class="skip">Skip to main content</a>
-
-    <!-- This is a Semantic HTML Change -->
     <header>
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="/">Homepage</a></li>
+                <li><a href="/" aria-current="page">Homepage</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/login.html">Login</a></li>
-                <li><a href="https://google.com" target="_blank" rel="noopener">Google</a></li>
+                <li><a href="https://google.com" target="_blank" rel="noopener noreferrer">Google</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- This is a Semantic HTML Change -->
-    <section class="hero" role="banner">
+    <section class="hero">
         <h1>Personal Budget</h1>
         <h2>Your Finance Partner</h2>
     </section>
 
-    <!-- This is a Semantic HTML Change -->
-    <main id="main" tabindex="-1">
-        <section>
+    <main>
+        <!-- This is a Semantic HTML Change -->
+        <section aria-labelledby="stay-on-track">
             <article>
-                <h2>Stay on Track</h2>
+                <h2 id="stay-on-track">Stay on Track</h2>
                 <p>
                     Do you know where you are spending your money? With proper budget tracking,
-                    you can achieve financial stability.
+                    you can achieve financial stability and reach your goals.
                 </p>
             </article>
+        </section>
 
+        <section aria-labelledby="alerts">
             <article>
-                <h2>Alerts</h2>
+                <h2 id="alerts">Alerts</h2>
                 <p>
                     Stay updated with alerts if you're about to exceed your set budget. Never
                     spend beyond your means.
                 </p>
             </article>
+        </section>
 
+        <section aria-labelledby="results">
             <article>
-                <h2>Results</h2>
+                <h2 id="results">Results</h2>
                 <p>
                     Budgeting helps you get out of debt faster and live a guilt-free, happier life.
                     Spend with confidence!
                 </p>
             </article>
+        </section>
 
+        <section aria-labelledby="free">
             <article>
-                <h2>Free</h2>
+                <h2 id="free">Free</h2>
                 <p>
                     Enjoy a free app where you are in full control of your data. Start budgeting today!
                 </p>
             </article>
         </section>
-        <!-- This is an A11y Change -->
-        <section aria-labelledby="chart-title">
-            <h2 id="chart-title">Budget Breakdown Chart</h2>
-            <canvas id="myChart" width="400" height="400" aria-label="Budget data visualization" role="img"></canvas>
+
+        <!-- This is a Semantic HTML Change -->
+        <section aria-labelledby="chart">
+            <article>
+                <h2 id="chart">Chart</h2>
+                <p>
+                    <canvas id="myChart" width="400" height="400" aria-label="Budget Chart" role="img"></canvas>
+                </p>
+            </article>
         </section>
     </main>
 
-    <!-- This is an A11y Change -->
-    <footer aria-label="Footer">
-        <p>All rights reserved &copy; Personal Budget</p>
+    <footer>
+        <p>All rights reserved &copy; Personal Budget Team</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
@@ -84,19 +92,16 @@
 
     <script>
         var dataSource = {
-            datasets: [
-                {
-                    data: [],
-                    backgroundColor: [
-                        '#ffcd56',
-                        '#ff6384',
-                        '#36a2eb',
-                        '#fd6b19',
-                    ]
-                }
-            ],
-            labels: []
-        };
+                datasets: [
+                    {
+                        data: [],
+                        backgroundColor: [
+                            '#3b82f6', '#6d28d9', '#00e0ff', '#0ea5e9',
+                        ]
+                    }
+                ],
+                labels: []
+            };
 
         function createChart() {
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -107,7 +112,7 @@
         }
 
         function getBudget() {
-            axios.get('/budget')  // Use relative URL, let Nginx forward request
+            axios.get('/budget')  // Use relative URL, let Nginx forward the request
             .then(function (res) {
                 dataSource.labels = res.data.myBudget.map(item => item.title);
                 dataSource.datasets[0].data = res.data.myBudget.map(item => item.budget);
