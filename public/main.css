@@ -1,109 +1,136 @@
+/* General Reset */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Body Styling */
 body {
-    font-size: 10px;
-    font-family: Tahoma, Arial;
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff; /* White text for neon contrast */
+    background-color: #1a1a2e; /* Deep blue background */
 }
 
+/* Navigation Bar */
 nav {
-    width: 100%;
-    background-color: #4d5791;
-    height: 44px;
-    padding: 0 40px;
+    background: linear-gradient(90deg, #0f4c75, #3282b8); /* Neon blue gradient */
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
-nav ul,
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
 nav ul li {
     margin: 0;
-    padding: 0 ;
-    list-style: none;
-    display: inline-block;
 }
 
 nav ul li a {
-    display: block;
-    padding: 0 20px;
-    line-height: 44px;
-    font-size: 1.4em;
+    color: #ffffff;
     text-decoration: none;
-    color: #fff;
-    margin: 0;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-nav ul li a:hover  {
-    background-color: white;
-    color: #4d5791;
+nav ul li a:hover {
+    background-color: #3282b8; /* Lighter neon blue for hover */
+    transform: scale(1.1);
 }
 
-div.hero {
-    height: 350px;
-    background-color: #b4c6f0;
-    background-image: url('bg.png');
-    background-size: 400px;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    padding-top: 40px;
-}
-
-div.hero h1,
-div.hero h2 {
+/* Hero Section */
+.hero {
+    background: linear-gradient(180deg, #3282b8, #1a1a2e); /* Neon blue to deep blue gradient */
     text-align: center;
-    margin: 0;
+    padding: 60px 20px;
+    border-bottom: 1px solid #0f4c75;
 }
 
-div.hero h1 {
-    color: #fff;
-    font-size: 4.2em;
-    margin-bottom: 20px;
+.hero h1 {
+    font-size: 2.8rem;
+    color: #ffffff; /* Bright white for text */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px #3282b8; /* Neon glow effect */
 }
 
-div.hero h2 {
-    color: #4d5791;
+.hero h2 {
+    font-size: 1.4rem;
+    color: #66fcf1; /* Teal for contrast */
 }
 
+/* Main Content */
 main {
-    padding: 40px;
-    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.page-area {
-    max-width: 768px;
-    display: inline-block;
-}
-
-footer {
-    height: 50px;
-    background-color: #b4c6f0;
-    padding: 40px;
-}
-
-.skip {
-    display: block;
-    line-height: 44px;
-    padding: 0 20px;
-    margin-top: -44px;
-}
-
-.skip:focus {
-    margin-top: 0;
-}
-
-.center {
+article {
+    background: #16213e; /* Dark purple-blue background */
+    border: 1px solid #3282b8; /* Neon blue border */
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(50, 130, 184, 0.5); /* Subtle neon glow */
+    padding: 20px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-main article {
-    display: inline-block;
-    width: 100%;
-    max-width: 340px;
-    text-align: justify;
-    margin: 20px;
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(50, 130, 184, 0.7); /* Bright neon glow on hover */
 }
 
-@media screen and (min-width: 768px) {
-    main article {
-        margin: 10px;
-    }
+article h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #66fcf1; /* Teal for contrast */
+}
+
+article p {
+    font-size: 1rem;
+    color: #d9d9d9; /* Soft white for readability */
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #0f4c75, #3282b8); /* Neon blue gradient */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* Button Styling (Optional) */
+button {
+    background-color: #3282b8;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #66fcf1; /* Teal on hover */
+    transform: scale(1.05);
 }
