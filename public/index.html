@@ -4,35 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Budget - Manage Your Expenses</title>
-    <!-- This is an SEO Change -->
-    <meta name="description" content="A neon-themed app to track your expenses and manage your budget effectively. Stay in control of your finances.">
-    <!-- This is an SEO Change -->
-    <meta name="keywords" content="budget tracking, personal finance, expense management, neon budget app">
-    <!-- This is an SEO Change -->
-    <meta name="author" content="Personal Budget Team">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <!-- This is an A11y Change -->
     <header>
         <nav aria-label="Main Navigation">
             <ul>
                 <li><a href="/" aria-current="page">Homepage</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/login.html">Login</a></li>
-                <li><a href="https://google.com" target="_blank" rel="noopener noreferrer">Google</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- This is a Semantic HTML Change -->
     <section class="hero">
         <h1>Personal Budget</h1>
         <h2>Your Finance Partner</h2>
     </section>
 
     <main>
-        <!-- This is a Semantic HTML Change -->
         <section aria-labelledby="stay-on-track">
             <article>
                 <h2 id="stay-on-track">Stay on Track</h2>
@@ -72,13 +62,11 @@
             </article>
         </section>
 
-        <!-- This is a Semantic HTML Change -->
+        <!-- Chart Section -->
         <section aria-labelledby="chart">
             <article>
                 <h2 id="chart">Chart</h2>
-                <p>
-                    <canvas id="myChart" width="400" height="400" aria-label="Budget Chart" role="img"></canvas>
-                </p>
+                <canvas id="myChart" width="400" height="400" aria-label="Budget Chart" role="img"></canvas>
             </article>
         </section>
     </main>
@@ -87,43 +75,54 @@
         <p>All rights reserved &copy; Personal Budget Team</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" crossorigin="anonymous"></script>
 
     <script>
         var dataSource = {
-                datasets: [
-                    {
-                        data: [],
-                        backgroundColor: [
-                            '#3b82f6', '#6d28d9', '#00e0ff', '#0ea5e9',
-                        ]
-                    }
-                ],
-                labels: []
-            };
+            datasets: [
+                {
+                    data: [100, 500, 300], /
+                    backgroundColor: ['#FFC0CB', '#FFFF00', '#8F00FF'] 
+                }
+            ],
+            labels: ['Eat Out', 'Rent', 'Groceries'] 
+        };
 
         function createChart() {
             var ctx = document.getElementById('myChart').getContext('2d');
-            var myPieChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'pie',
                 data: dataSource
             });
         }
-
         function getBudget() {
-            axios.get('/budget')  // Use relative URL, let Nginx forward the request
-            .then(function (res) {
-                dataSource.labels = res.data.myBudget.map(item => item.title);
-                dataSource.datasets[0].data = res.data.myBudget.map(item => item.budget);
-                createChart();
-            })
-            .catch(function (error) {
-                console.error("Error fetching budget data:", error);
-            });
+
+        axios.get('/budget')
+
+        .then(function (res) {
+
+            console.log(res);
+
+            for (var i = 0; i < res.data.myBudget.length; i++) {
+
+                dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+
+                dataSource. labels [i] = res.data.myBudget[i].title;
+
         }
 
-        getBudget();
+createChart();
+
+});
+
+}
+
+getBudget();
+
+createChart();
+
+        createChart();
     </script>
 </body>
 </html>

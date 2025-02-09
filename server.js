@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
-
+app.use('/budget', express.static('public'));
 const budget = {
     myBudget: [
         {
