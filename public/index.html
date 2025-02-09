@@ -82,7 +82,7 @@
         var dataSource = {
             datasets: [
                 {
-                    data: [100, 500, 300], /
+                    data: [100, 500, 300], 
                     backgroundColor: ['#FFC0CB', '#FFFF00', '#8F00FF'] 
                 }
             ],
@@ -104,13 +104,13 @@
 
             console.log(res);
 
-            for (var i = 0; i < res.data.myBudget.length; i++) {
+            //for (var i = 0; i < res.data.myBudget.length; i++) {
 
-                dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+              //  dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
 
-                dataSource. labels [i] = res.data.myBudget[i].title;
+              //  dataSource. labels [i] = res.data.myBudget[i].title;
 
-        }
+      //  }
 
 createChart();
 
@@ -118,11 +118,8 @@ createChart();
 
 }
 
-getBudget();
-
 createChart();
 
-        createChart();
     </script>
 </body>
 </html>
