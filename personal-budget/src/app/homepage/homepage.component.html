@@ -1,4 +1,7 @@
 <main>
+
+  <app-breadcrumbs></app-breadcrumbs>
+
   <section aria-labelledby="stay-on-track">
     <app-article ngSkipHydration>
       <h2 slot="title">Stay on Track</h2>
@@ -44,6 +47,8 @@
     </app-article>
   </section>
 
-  <h2 style="text-align: center;">D3.js Chart</h2>
-  <div id="d3-chart" style="width: 100%; height: 400px;"></div>
+  <section>
+    <h2 style="text-align: center;">D3.js Bar Chart</h2>
+    <div #d3Chart style="width: 100%; height: 400px;"></div>
+  </section>
 </main>
